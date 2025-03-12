@@ -1,35 +1,39 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useRef, useEffect } from "react";
+import {Route, Routes} from "react-router-dom"
+import "./App.css";
+import AnalyticsPage from "./pages/AnalyticsPage";
+import HomePage from "./pages/HomePage";
+import LoginPage from "./pages/LoginPage";
+import receiptsPage from "./pages/ReceiptsPage";
 
-function App() {
-  const [count, setCount] = useState(0)
 
-  return (
+async function App(e) {
+  const res = await fetch("http://localhost:8080/");
+  const data = await res.json();
+  console.log(data)
+
+  
+    async function handleSubmit(e) {
+      // <-- listen and handle events
+      e.preventDefault();
+      const todo = {
+        text: textRef.current.value,
+      };
+      fetch("http://localhost:8080/api/todos", {
+        method: "POST",
+        body: JSON.stringify(todo),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+    }
+
+    return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+        <h1>ummm hello</h1>
+        <button onClick={handleSubmit}>Submit</button>
+        </>
+    )
+  }
 
-export default App
+export default App;
