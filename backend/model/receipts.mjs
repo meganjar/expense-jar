@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const receiptSchema = new mongoose.Schema({
+const receiptsSchema = new mongoose.Schema({
   transactionDate: {
     type: Date,
     required: true,
@@ -17,14 +17,14 @@ const receiptSchema = new mongoose.Schema({
     { 
       itemName: {
       type: String,
-        required: true}
+        required: true},
       itemCost: {
-      type: Number,
-      required: true
-      min: [0.01, "Total cost must be greater than 0."]
+        type: Number,
+        required: true,
+        min: [0.01, "Total cost must be greater than $0.00."]
     } }],
 });
 
 receiptSchema.index({ transactionDate: 1, totalCost: -1 });
 
-export const Receipt = mongoose.model("Receipt", receiptSchema);
+export const Receipt = mongoose.model("Receipts", receiptsSchema);

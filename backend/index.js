@@ -3,6 +3,8 @@ import express from 'express'; // The server were gonna use
 import cors from 'cors' // Handle route headers so they are readable
 import 'dotenv/config' // Loads .env variables into process.env.
 import connectDB from './db/conn.mjs' // How we connect to Mongo
+import receipts from './model/receipt.model.mjs'
+import users from './model/users.model.mjs'
 // import Todo from './model.js' // Todo is our model
 // 2 create app
 const app = express();
