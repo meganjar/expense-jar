@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import isEmail from 'validator/lib/isEmail';
+import isEmail from 'validator/lib/isEmail.js';
 
 
 const usersSchema = new mongoose.Schema({
@@ -24,6 +24,5 @@ const usersSchema = new mongoose.Schema({
   },
 });
 
-usersSchema.index({ email: 1 });
 
 export default mongoose.model("Users", usersSchema);

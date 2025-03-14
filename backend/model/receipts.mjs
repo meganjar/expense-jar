@@ -25,6 +25,6 @@ const receiptsSchema = new mongoose.Schema({
     } }],
 });
 
-receiptSchema.index({ transactionDate: 1, totalCost: -1 });
+receiptsSchema.index({ transactionDate: 1, totalCost: -1 });
 
-export const Receipt = mongoose.model("Receipts", receiptsSchema);
+export default mongoose.model("Receipts", receiptsSchema);
