@@ -1,9 +1,7 @@
 import Users from '../model/users.mjs';
 import bcrypt from 'bcrypt';
-// @desc    Create a new user
-// @route   POST /api/users
-// @access  Public
-export const createUser = async (req, res) => {
+
+export default async function createUser(req, res) {
   try {
     const { googleId, name, email, password } = req.body;
 
@@ -29,7 +27,7 @@ export const createUser = async (req, res) => {
   }
 };
 
-export const getAllUsers = async (req, res) => {
+export default async function getAllUsers(req, res) {
   try {
     const users = await Users.find();
     res.status(200).json(users);
@@ -39,10 +37,7 @@ export const getAllUsers = async (req, res) => {
   }
 };
 
-// @desc    Get a single user by ID
-// @route   GET /api/users/:id
-// @access  Public
-export const getUserById = async (req, res) => {
+export default async function getUserById(req, res) {
   try {
     const user = await Users.findById(req.params.id);
     if (!user) {
@@ -55,10 +50,7 @@ export const getUserById = async (req, res) => {
   }
 };
 
-// @desc    Delete a user
-// @route   DELETE /api/users/:id
-// @access  Public
-export const deleteUser = async (req, res) => {
+export default async function deleteUser(req, res) {
   try {
     const user = await Users.findByIdAndDelete(req.params.id);
     if (!user) {

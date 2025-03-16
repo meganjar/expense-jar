@@ -9,6 +9,7 @@ import receipts from './model/receipts.mjs'
 import users from './model/users.mjs'
 import './config/passport.mjs'
 import userRoutes from './routes/userRoutes.mjs'
+import receiptRoutes from './routes/receiptRoutes.mjs'
 
 
 // import Todo from './model.js' // Todo is our model
@@ -19,6 +20,7 @@ app.use(cors())
 app.use(express.json()) // <--- if we want to handle a post request
 connectDB() 
 app.use('/api/users', userRoutes);
+app.use('/api/receipts', receiptRoutes);
 // app.use("/login", oAuthRoutes)
 // app.use("/users", userRoutes)
 // app.use("/receipts", receipts)
