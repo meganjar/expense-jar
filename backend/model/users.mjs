@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import validator from 'validator/lib/isEmail.js';
+import isEmail from "validator/lib/isEmail.js";
 
 
 const usersSchema = new mongoose.Schema({
@@ -18,7 +18,7 @@ const usersSchema = new mongoose.Schema({
     unique: true,
     validate: {
         validator: function (email) {
-          return validator.isEmail(email) && !email.includes("+");
+          return isEmail(email) && !email.includes("+");
         },
         message: "Not a valid email address",
       },

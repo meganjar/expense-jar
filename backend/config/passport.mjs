@@ -1,6 +1,6 @@
 import passport from "passport";
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
-import users from "../models/Users.mjs";
+import users from "../model/users.mjs";
 
 passport.use(
   new GoogleStrategy(
@@ -35,3 +35,5 @@ passport.deserializeUser(async (id, done) => {
   const user = await users.findById(id);
   done(null, user);
 });
+
+export default passport;
