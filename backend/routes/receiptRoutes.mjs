@@ -1,5 +1,5 @@
 import express from 'express';
-import {} from '../controllers/receipts.mjs'
+import { createReceipt, getAllReceipts, getReceiptById, deleteReceipt, updateReceipt } from '../controllers/receipts.mjs'
 
 const router = express.Router();
 
@@ -15,3 +15,21 @@ router.route("/:id")
 
 
 export default router;
+
+//mock item
+const item = {
+  "transactionDate": "2025-03-15T14:30:00Z",
+  "totalCost": 75.50,
+  "vendor": "Fresh Market Grocery",
+  "lineItems": [
+    {
+      "itemName": "Organic Apples",
+      "itemCost": 10.00
+    },
+    {
+      "itemName": "Almond Milk",
+      "itemCost": 5.50
+    }
+   
+  ]
+}

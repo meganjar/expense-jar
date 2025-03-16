@@ -1,7 +1,7 @@
 import Users from '../model/users.mjs';
 import bcrypt from 'bcrypt';
 
-export default async function createUser(req, res) {
+export async function createUser(req, res) {
   try {
     const { googleId, name, email, password } = req.body;
 
@@ -27,7 +27,7 @@ export default async function createUser(req, res) {
   }
 };
 
-export default async function getAllUsers(req, res) {
+export async function getAllUsers(req, res) {
   try {
     const users = await Users.find();
     res.status(200).json(users);
@@ -37,7 +37,7 @@ export default async function getAllUsers(req, res) {
   }
 };
 
-export default async function getUserById(req, res) {
+export async function getUserById(req, res) {
   try {
     const user = await Users.findById(req.params.id);
     if (!user) {
@@ -50,7 +50,7 @@ export default async function getUserById(req, res) {
   }
 };
 
-export default async function deleteUser(req, res) {
+export async function deleteUser(req, res) {
   try {
     const user = await Users.findByIdAndDelete(req.params.id);
     if (!user) {
