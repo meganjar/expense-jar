@@ -1,19 +1,31 @@
-
-// const express = require('express');
-// const router = express.Router();
-
+import express from "express";
+import passport from "passport";
 
 
-// // Callback URL: http://localhost:8080/auth/google/callback
+const router = express.Router();
+
+// Auth init
+router.get("/login/google", passport.authenticate("google", 
+  { scope: ["email", "profile", "openid"] }
+));      
+
+// Auth callback
+
+router.get("/login/google/callback",
+  passport.authenticate("google", {
+    failureRedirect: "/login", // Redirect on failure
+    successRedirect: "http://localhost:5173/", // Redirect on success
+  })
+)
+
+router.get('/logout', async (req, res, next) => {
+  try {
+    req.logout();
+    res.redirect('/');
+    }  catch (err) {
+     next(err);
+    }
+  });
 
 
-// // router.get('auth/google', passport.authenticate('google', {session: false, scope: ['email','profile']}) );
-
-// router.get('/login', oAuthController.login);
-
-// // Route: GET /auth/google
-// router.get('/google', oAuthController.googleLogin);
-
-// // Route: GET /auth/google/callback
-// router.get('/google/callback', oAuthController.googleCallback);
-
+export default router;
