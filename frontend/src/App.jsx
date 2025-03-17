@@ -19,7 +19,7 @@ function App() {
 
     return (
     <>
-      <Nav />
+      <LowerNav />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
