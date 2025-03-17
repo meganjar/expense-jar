@@ -1,5 +1,6 @@
 import express from "express";
 import passport from "passport";
+import { createUser } from "../controllers/users.mjs";
 
 
 const router = express.Router();
@@ -12,11 +13,15 @@ router.get("/login/google", passport.authenticate("google",
 // Auth callback
 
 router.get("/login/google/callback",
-  passport.authenticate("google", {
-    failureRedirect: "/login", // Redirect on failure
-    successRedirect: "http://localhost:5173/", // Redirect on success
-  })
-)
+  passport.authenticate("google", { failureRedirect: "/login", session: true }),
+  (req, res) => {
+    // ✅ User is authenticated via Passport session, respond accordingly
+    res.status(200).json({ message: "Google Login Successful", user: req.user });
+  }
+);
+  
+
+
 
 router.get('/logout', async (req, res, next) => {
   try {

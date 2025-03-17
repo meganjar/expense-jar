@@ -23,7 +23,7 @@ app.use(session({
   saveUninitialized: false,
   cookie: {
     secure: process.env.NODE_ENV === 'production',
-    maxAge: 24 * 60 * 60 * 1000, // 1 day
+    maxAge: 1000 * 60 * 60 * 24 * 90, 
   },
 }));
 app.use(passport.initialize())

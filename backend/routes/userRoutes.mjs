@@ -1,5 +1,6 @@
 import express from "express";
 import {
+  logInUser,
   createUser,
   getAllUsers,
   getUserById,
@@ -8,6 +9,8 @@ import {
 } from "../controllers/users.mjs";
 
 const router = express.Router();
+
+router.post("/login", logInUser);
 
 router.route("/")
   .post(createUser)

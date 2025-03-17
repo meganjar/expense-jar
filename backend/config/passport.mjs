@@ -10,21 +10,25 @@ passport.use(
       callbackURL: "http://localhost:8080/api/auth/login/google/callback",
       scope: ["email", "profile", "openid"],
     },
-    async (accessToken, refreshToken, profile, done) => {
+    async ( accessToken, refreshToken, profile, done) => {
       try {
-        // check if returns a user
-        const user =
-          (await users.findOne({ googleId: profile.id })) || // or if we didn't
-          (await users.create({
+        //check if user
+        let user = await users.findOne({ googleId: profile.id });
+
+     // Create oauth user 
+// no password 
+        if (!user) {
+        user = await users.create(
+         {
             googleId: profile.id,
             email: profile.emails[0].value,
             name: profile.displayName,
             picture: profile.photos[0].value,
-          }));
-
-        done(null, user);
+         })
+        } done(null, user);
       } catch (err) {
-        done(err, null);
+        console.error("Google Auth Error:", err);
+        return done(err, null);
       }
     }
   )
@@ -34,7 +38,7 @@ passport.serializeUser((user, done) => done(null, user.id));
 
 passport.deserializeUser(async (id, done) => {
   const user = await users.findById(id);
-  done(null, user);
+  return done(null, user);
 });
 
 export default passport;
