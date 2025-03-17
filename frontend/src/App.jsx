@@ -5,7 +5,7 @@ import AnalyticsPage from "./pages/AnalyticsPage";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import ReceiptsPage from "./pages/ReceiptsPage";
-import Nav from "./Components/Nav";
+import LowerNav from "./Components/Nav";
 
 
 function App() {
