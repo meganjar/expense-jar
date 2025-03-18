@@ -1,20 +1,27 @@
-import { create } from 'zustand';
+import { create } from "zustand";
+import { leitenRequest } from "leiten-zustand";
 
-const baseURL = 'http://localhost:8080/api';
+const baseURL = "http://localhost:8080/api";
 
-const useStore = create((set, get) => ({
-  receipts: [],
-  fetchReceipts: async () => {
-    try {
-      const response = await fetch(`${baseURL}/receipts`, { method: 'GET' });
-      const data = await response.json();
-      console.log(await response.json());
-      set({ receipts: data.items });
-    } catch (error) {
-      console.error("Error fetching receipts:", error);
-      set({ receipts: [] });
-    }
+// ✅ Clean Zustand state only
+export const useStore = create(() => ({
+  data: {
+    receipts: [],
+    user: {},
   },
 }));
 
-export default useStore;
+//reuse fetch
+const fetchCollection = (endpoint) =>
+  fetch(`${baseURL}/${endpoint}`).then((res) => res.json());
+
+
+export const useReceiptsRequest = () =>
+  leitenRequest(useStore, "data.receipts", () => fetchCollection("receipts"));
+
+
+export const useUserRequest = () =>
+  leitenRequest(useStore, "data.user", (userId) => fetchCollection(`users/${userId}`));
+
+export const useDynamicRequest = (path) =>
+  leitenRequest(useStore, `data.${path}`, (endpoint) => fetchCollection(endpoint));

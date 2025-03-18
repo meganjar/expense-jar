@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import AnalyticsPage from "./pages/AnalyticsPage";
+import ReportingPage from "./pages/ReportingPage";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import ReceiptsPage from "./pages/ReceiptsPage";
@@ -17,16 +17,14 @@ function App() {
 
   return (
     <>
-      <div >
+      <div>
         <NavBar />
         <Routes>
           <Route path="/"  element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/receipts" element={<ReceiptsPage />} />
-          <Route path="/analytics" element={<AnalyticsPage />} />
+          <Route path="/reporting" element={<ReportingPage />} />
         </Routes>
-        
-          
         
       </div>
     </>
