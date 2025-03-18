@@ -1,8 +1,12 @@
 import React from 'react'
+import NewReceipt from '../Components/NewReceipt'
 
 function HomePage() {
   return (
-    <div>HomePage</div>
+    <div>
+      <div>HomePage</div>
+      <NewReceipt />
+    </div>
   )
 }
 

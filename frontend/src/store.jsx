@@ -2,18 +2,17 @@ import { create } from 'zustand';
 import receipts from '../../backend/model/receipts.mjs';
 export { useStore };
 const baseURL = 'http://localhost:8080/api'
-const receipts = '/receipts'
+const receiptsURL = './receipts'
 
 
-
-const useStore = create((set, get) => ({
+ const useStore = create((set, get) => ({
 receipts: [],
     fetchReceipts: async() => {
         try {
                 const { query } = get();
                 if (!query) return;
                 const encodedQuery = encodeURIComponent(query)
-                const response = await fetch(`${baseURL}${receipts}`);
+                const response = await fetch(`${baseURL}${receiptsURL}`);
               
                 const data = await response.json();
                 console.log(data.items)
@@ -26,3 +25,5 @@ receipts: [],
           }
     }
   }))
+
+  export default useStore

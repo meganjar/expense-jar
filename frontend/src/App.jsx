@@ -5,7 +5,8 @@ import AnalyticsPage from "./pages/AnalyticsPage";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import ReceiptsPage from "./pages/ReceiptsPage";
-import LowerNav from "./Components/Nav";
+import NavBar from "./Components/NavBar";
+import NewReceipt from "./Components/NewReceipt";
 
 function App() {
   // const res = await fetch("http://localhost:8080/");
@@ -16,14 +17,16 @@ function App() {
 
   return (
     <>
-      <div className="bg-black min-h-screen">
-        <LowerNav />
+      <div >
+        <NavBar />
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/"  element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/receipts" element={<ReceiptsPage />} />
           <Route path="/analytics" element={<AnalyticsPage />} />
         </Routes>
+        
+          
         <button onClick={handleSubmit}>Submit</button>
       </div>
     </>
