@@ -35,5 +35,5 @@ app.use('/api/auth', oAuthRoutes);
 
 // listen on a specific port
 app.listen(port, () => {
-console.log(`Example app listening on port ${port}`);
+console.log(`listening on port ${port}`);
 })

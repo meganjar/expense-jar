@@ -3,12 +3,6 @@ import { MongoClient } from "mongodb";
 import dotenv from "dotenv";
 dotenv.config();
 
-// db.mjs
-
-
-dotenv.config();
-
-console.log("hi")
 
 const connectDB = async () => {
   try {
@@ -20,7 +14,7 @@ const connectDB = async () => {
     console.log('MongoDB Connected');
   } catch (error) {
     console.error('MongoDB Connection Error:', error.message);
-    process.exit(1); // Exit process on connection failure
+    process.exit(1); 
   }
 };
 

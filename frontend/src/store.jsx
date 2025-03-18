@@ -1,29 +1,20 @@
 import { create } from 'zustand';
-import receipts from '../../backend/model/receipts.mjs';
-export { useStore };
-const baseURL = 'http://localhost:8080/api'
-const receiptsURL = './receipts'
 
+const baseURL = 'http://localhost:8080/api';
 
- const useStore = create((set, get) => ({
-receipts: [],
-    fetchReceipts: async() => {
-        try {
-                const { query } = get();
-                if (!query) return;
-                const encodedQuery = encodeURIComponent(query)
-                const response = await fetch(`${baseURL}${receiptsURL}`);
-              
-                const data = await response.json();
-                console.log(data.items)
-                set({ receipts: data.items});
-                console.log(get().searchResults)
-                
-             } catch (error) {
-                console.error("Error fetching results:", error);
-                set({ searchResults: [] });
-          }
+const useStore = create((set, get) => ({
+  receipts: [],
+  fetchReceipts: async () => {
+    try {
+      const response = await fetch(`${baseURL}/receipts`, { method: 'GET' });
+      const data = await response.json();
+      console.log(await response.json());
+      set({ receipts: data.items });
+    } catch (error) {
+      console.error("Error fetching receipts:", error);
+      set({ receipts: [] });
     }
-  }))
+  },
+}));
 
-  export default useStore
+export default useStore;

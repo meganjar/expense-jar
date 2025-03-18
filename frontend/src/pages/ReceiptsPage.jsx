@@ -1,16 +1,21 @@
-import React from 'react'
+import React, {useEffect} from 'react';
 import useStore from '../store';
 
 export default function ReceiptsPage() {
-
-  const { getReceipts } = useStore();
+  const fetchReceipts = useStore((state) => state.fetchReceipts);
+  const receipts = useStore((state) => state.receipts); 
+  useEffect(() => {
+    fetchReceipts();
+  }, []);
 
   return (
-    <>
-    <div>ReceiptsPage</div>
-    {getReceipts.forEach(receipt => {
-      console.log(receipt)
-    })}
-    </>
-  )
+    <div>
+      <h2>Receipts</h2>
+      {receipts.map((receipt) => (
+        <div key={receipt.id}>
+          <p>{receipt.name}: ${receipt.amount}</p>
+        </div>
+      ))}
+    </div>
+  );
 }
