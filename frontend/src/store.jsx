@@ -3,7 +3,7 @@ import { leitenRequest } from "leiten-zustand";
 
 const baseURL = "http://localhost:8080/api";
 
-// ✅ Clean Zustand state only
+
 export const useStore = create(() => ({
   data: {
     receipts: [],

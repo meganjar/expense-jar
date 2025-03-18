@@ -11,15 +11,31 @@ export default function ReportingPage() {
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error fetching receipts</div>;
 
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
+
   const total = receipts.reduce((sum, receipt) => sum + receipt.totalCost, 0);
   return (
     <div>
       <h2>Reporting</h2>
 
       <div>total : ${total}</div>
-      
-      <input type="date" />
-      <input type="date" />
+      <label htmlFor="start">Start date: </label>
+      <input
+        id="start"
+        type="date"
+        value={startDate}
+        onChange={(e) => setStartDate(e.target.value)}
+        name="start"
+      />
+      <label htmlFor="end">End date: </label>
+      <input
+        id="end"
+        type="date"
+        value={EndDate}
+        onChange={(e) => setEndDate(e.target.value)}
+        name="start"
+      />
 
       <table>
         <thead>
@@ -30,13 +46,19 @@ export default function ReportingPage() {
           </tr>
         </thead>
         <tbody>
-          {receipts.map((receipt) => (
-            <tr key={receipt._id}>
-              <td>${receipt.totalCost}</td>
-              <td>{receipt.vendor}</td>
-              <td>{receipt.transactionDate}</td>
-            </tr>
-          ))}
+          {receipts
+            .filter(
+              (r) =>
+                (!startDate || r.transactionDate >= startDate) &&
+                (!endDate || r.transactionDate <= endDate)
+            )
+            .map((receipt) => (
+              <tr key={receipt._id}>
+                <td>${receipt.totalCost}</td>
+                <td>{receipt.vendor}</td>
+                <td>{receipt.transactionDate}</td>
+              </tr>
+            ))}
         </tbody>
       </table>
     </div>
