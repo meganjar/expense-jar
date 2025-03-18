@@ -25,6 +25,7 @@ function LowerNav() {
           />
         </ul>
       </nav>
+      hihi
     </div>
   );
 }
