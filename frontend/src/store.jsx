@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { leitenRequest } from "leiten-zustand";
 
-const baseURL = "http://localhost:8080/api";
+const baseURL = "http://localhost:8080/api" ;
 
 
 export const useStore = create(() => ({
@@ -20,8 +20,8 @@ export const useReceiptsRequest = () =>
   leitenRequest(useStore, "data.receipts", () => fetchCollection("receipts"));
 
 
-export const useUserRequest = () =>
-  leitenRequest(useStore, "data.user", (userId) => fetchCollection(`users/${userId}`));
+export const useDeleteReceiptRequest = (receiptID) =>
+  leitenRequest(useStore, "data.receipt", (receiptID) => fetchCollection(`receipts/${receiptID}`));
 
 export const useDynamicRequest = (path) =>
   leitenRequest(useStore, `data.${path}`, (endpoint) => fetchCollection(endpoint));

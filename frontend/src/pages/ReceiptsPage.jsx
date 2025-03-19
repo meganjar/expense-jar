@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useStore, useReceiptsRequest } from "../store";
+import ReceiptCard from "../Components/ReceiptCard";
 
 export default function ReceiptsPage() {
   const { action, loading, error } = useReceiptsRequest();
@@ -15,11 +16,9 @@ export default function ReceiptsPage() {
     <div>
       <h2>Receipts</h2>
       {receipts.map((receipt) => (
-        <div key={receipt.id}>
-          <p>
-            ${receipt.totalCost}  {receipt.vendor}
-          </p>
-        </div>
+        
+          <ReceiptCard receipt={receipt} />
+        
       ))}
     </div>
   );
