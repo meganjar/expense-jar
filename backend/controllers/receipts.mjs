@@ -9,7 +9,13 @@ export async function createReceipt(req, res) {
       transactionDate,
       totalCost,
       vendor,
-      lineItems
+      lineItems,
+      //  greyed until read for image processing
+      // image: req.file ? {
+      //   data: req.file.buffer,
+      //   contentType: req.file.mimetype
+      // } : undefined
+
     });
 
     const savedReceipt = await newReceipt.save();
@@ -22,9 +28,14 @@ export async function createReceipt(req, res) {
 
 export async function getAllReceipts(req, res) {
   try {
-    const receipt = await receipts.find();
-    console.log(receipts.find)
-    res.status(200).json(receipt);
+    const allReceipts = await receipts.find();
+    console.log(allReceipts.find)
+    allReceipts.forEach(receipt => {
+      if (receipt.image?.data) {
+        receipt.image.data = receipt.image.data.toString('base64');
+      }
+    });
+    res.status(200).json(receipts);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Error fetching receipts", error });

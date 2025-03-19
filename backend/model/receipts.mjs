@@ -1,5 +1,15 @@
 import mongoose from "mongoose";
 
+var imageSchema = new mongoose.Schema({
+  name: String,
+  desc: String,
+  img:
+  {
+      data: Buffer,
+      contentType: String
+  }
+})
+
 const receiptsSchema = new mongoose.Schema({
   transactionDate: {
     type: Date,
@@ -23,6 +33,10 @@ const receiptsSchema = new mongoose.Schema({
         required: true,
         min: [0.01, "Total cost must be greater than $0.00."]
     } }],
+    image: {
+      data: Buffer,        
+      contentType: String  
+    }
 });
 
 receiptsSchema.index({ transactionDate: 1, totalCost: -1 });

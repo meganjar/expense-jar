@@ -17,7 +17,7 @@ export default function ReceiptsPage() {
       <h2>Receipts</h2>
       {receipts.map((receipt) => (
         
-          <ReceiptCard receipt={receipt} />
+          <ReceiptCard key={receipt._id}receipt={receipt} />
         
       ))}
     </div>
