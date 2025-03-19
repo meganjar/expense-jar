@@ -13,7 +13,9 @@ export const useStore = create(() => ({
 
 //reuse fetch
 const fetchTemplate = (endpoint, options) =>
-  fetch(`${baseURL}${endpoint}`, options).then((res) => res.json());
+  fetch(`${baseURL}${endpoint}`, options).then((res) =>
+    res.ok ? res.json() : res.json().then((err) => { throw new Error(err.message)})
+  );
 
 
 export const useReceiptsRequest = () =>
@@ -21,7 +23,7 @@ export const useReceiptsRequest = () =>
 
 
 export const useDeleteReceiptRequest = () =>
-  leitenRequest(useStore, "data.receipt", ({receiptID}) => fetchTemplate(`/receipts/${receiptID}`, { method: "DELETE" }));
+  leitenRequest(useStore, "data.receipts", ({receiptID}) => fetchTemplate(`/receipts/${receiptID}`, { method: "DELETE" }));
 
 export const useDynamicRequest = (path) =>
   leitenRequest(useStore, `data.${path}`, (endpoint) => fetchTemplate(endpoint));

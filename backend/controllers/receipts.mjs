@@ -35,7 +35,7 @@ export async function getAllReceipts(req, res) {
         receipt.image.data = receipt.image.data.toString('base64');
       }
     });
-    res.status(200).json(receipts);
+    res.status(200).json(allReceipts);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Error fetching receipts", error });
