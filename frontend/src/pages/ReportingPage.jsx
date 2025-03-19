@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useStore, useReceiptsRequest } from "../store";
 
 export default function ReportingPage() {
@@ -14,7 +14,14 @@ export default function ReportingPage() {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
 
-  const total = receipts.reduce((sum, receipt) => sum + receipt.totalCost, 0);
+
+  const filteredReceipts = receipts.filter(
+    (r) =>
+      (!startDate || r.transactionDate >= startDate) &&
+      (!endDate || r.transactionDate <= endDate)  
+  )
+
+  const total = filteredReceipts.reduce((sum, receipt) => sum + receipt.totalCost, 0);
   return (
     <div>
       <h2>Reporting</h2>
@@ -32,7 +39,7 @@ export default function ReportingPage() {
       <input
         id="end"
         type="date"
-        value={EndDate}
+        value={endDate}
         onChange={(e) => setEndDate(e.target.value)}
         name="start"
       />
@@ -46,13 +53,7 @@ export default function ReportingPage() {
           </tr>
         </thead>
         <tbody>
-          {receipts
-            .filter(
-              (r) =>
-                (!startDate || r.transactionDate >= startDate) &&
-                (!endDate || r.transactionDate <= endDate)
-            )
-            .map((receipt) => (
+          {filteredReceipts.map((receipt) => (
               <tr key={receipt._id}>
                 <td>${receipt.totalCost}</td>
                 <td>{receipt.vendor}</td>
