@@ -1,27 +1,28 @@
 import React, { useEffect, useState } from "react";
-import { useStore, useDeleteReceiptRequest } from '../store';
+import { useStore, useDeleteReceiptRequest, useReceiptsRequest } from '../store';
 
 
 function ReceiptCard({receipt}) {
  
-  const { action, error } = useDeleteReceiptRequest();
+
+  const { action: deleteAction, error } = useDeleteReceiptRequest();
+const { action: fetchReceipts } = useReceiptsRequest();
+  const { data } = useStore();
 
 
   const handleClick = (receipt) => {
-    action({receiptID: receipt._id});
-   
+    deleteAction({receiptID: receipt._id});
+    fetchReceipts()
   }
-
-
   
   return (
     <div>
-  //comment out image until parsing and transforming is figured out
-      {/* <img src="" alt="" /> */}
+    
+      {/*  image field in backlog <img src="" alt="" /> */ }
       <p>{receipt.vendor}</p>
       <p> {receipt.totalCost}</p>
       <button onClick={() => handleClick(receipt)} >delete</button>
-      <button>edit</button>
+     
       {error ? "Error deleting receipt" : "" }
     </div>
     

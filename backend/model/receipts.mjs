@@ -34,7 +34,7 @@ const receiptsSchema = new mongoose.Schema({
         min: [0.01, "Total cost must be greater than $0.00."]
     } }],
     image: {
-      data: Buffer,        
+      data: Buffer,           // Binary data for the image
       contentType: String  
     }
 });

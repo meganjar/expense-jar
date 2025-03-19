@@ -15,15 +15,23 @@ export const useStore = create(() => ({
 const fetchTemplate = (endpoint, options) =>
   fetch(`${baseURL}${endpoint}`, options).then((res) =>
     res.ok ? res.json() : res.json().then((err) => { throw new Error(err.message)})
+
   );
 
 
 export const useReceiptsRequest = () =>
   leitenRequest(useStore, "data.receipts", () => fetchTemplate("/receipts"));
 
+export const useNewReceiptRequest = () =>
+  leitenRequest(useStore, "data.receipts", (formattedData) => 
+    fetchTemplate("/receipts", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(formattedData)
+  }))
 
 export const useDeleteReceiptRequest = () =>
-  leitenRequest(useStore, "data.receipts", ({receiptID}) => fetchTemplate(`/receipts/${receiptID}`, { method: "DELETE" }));
 
-export const useDynamicRequest = (path) =>
-  leitenRequest(useStore, `data.${path}`, (endpoint) => fetchTemplate(endpoint));
+  leitenRequest(useStore, null, (data) => 
+    
+    fetchTemplate(`/receipts/${data.receiptID}`, { method: "DELETE" }));
