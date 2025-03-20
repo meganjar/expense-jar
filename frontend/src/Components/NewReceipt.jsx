@@ -1,23 +1,26 @@
 import React from "react";
 import { useState } from "react";
-import { useStore, useNewReceiptRequest } from "../store";
+import { useStore, useNewReceiptRequest, useReceiptsRequest } from "../store";
 
 
 function NewReceipt() {
-  const { action } = useNewReceiptRequest();
+  const { action: createReceipt } = useNewReceiptRequest();
+  const { action: fetchReceipts } = useReceiptsRequest();
  
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target; 
-    
+
     const formattedData = {
       vendor: form.vendor.value,
-      totalCost: parseFloat(form.totalCost.value),
+      totalCost: Math.round(form.totalCost.value * 100) / 100,
       transactionDate: new Date(form.transactionDate.value).toISOString(),
       lineItems: [] 
     };
-    action(formattedData);
+    createReceipt(formattedData);
+    fetchReceipts();
+    form.reset();
   };
   // addLineItem = () => {   Roadmap item, plus button to add additional line item inputs 
   //   return (
@@ -31,17 +34,17 @@ function NewReceipt() {
   // };
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <div>
+      <form onSubmit={handleSubmit} >
+     <div >
           <label htmlFor="merchant">Merchant</label>
           <input type="text" id="merchant" name="vendor" required />
           <label htmlFor="amount">Amount $</label>
-          <input type="number" id="amount" name="totalCost" required />
+          <input type="number" step="0.01" id="amount" name="totalCost" required />
           <label htmlFor="date">Date</label>
-          <input type="date" id="date" name="transactionDate" required/>
+          <input type="date" max={new Date().toISOString().split('T')[0]}  id="date" name="transactionDate" required/>
 
           <button type="submit">Submit</button>
-        </div>
+          </div>
       </form>
     </div>
   );

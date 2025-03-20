@@ -14,13 +14,13 @@ export default function ReceiptsPage() {
   if (error) return <div>Error fetching receipts</div>;
 
   return (
-    <div>
+    <>
       <h2>Receipts</h2>
       {receipts.map((receipt) => (
         
           <ReceiptCard key={receipt._id}receipt={receipt} />
         
       ))}
-    </div>
+    </>
   );
 }

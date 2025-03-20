@@ -1,37 +1,101 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@layer base {
-  html,
-  body,
-  #root {
-    @apply bg-[#2a0127] text-white min-h-screen;
-  }
-
-  input {
-    @apply bg-white/20 text-white placeholder-white/70 p-2 rounded border border-white/30 
-           focus:outline-none focus:ring-2 focus:ring-white/50;
-  }
-
-  button {
-    @apply bg-[#1a1a1a] text-white rounded-lg p-3 w-full shadow-sm 
-           hover:bg-[#222222] active:bg-[#333333];
-  }
+/* Optional: Add test or global styles */
+body {
+  background-color: #000;
+  color: #d1d5db; /* text-gray-300 */
+  font-family: sans-serif;
 }
 
-@layer components {
-    .form-container {
-    @apply w-full max-w-sm mx-auto p-4 flex flex-col gap-4;
-  }
+h1, h2 {
+  color: #ffffff;         /* Pure white */
+  font-weight: 700;       /* Bold */
+}
 
-  .app-container {
-    @apply flex flex-col items-center justify-center min-h-screen p-4 gap-6;
-  }
+h3 {
+  color: #d1d5db;         /* Tailwind's text-gray-300 */
+  font-weight: 600;       /* Slightly less bold */
+}
 
-  .nav-item {
-    @apply text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition duration-200;
-  }
+p {
+  color: #9ca3af;         /* Tailwind's text-gray-400 */
+  font-weight: 400;
+}
 
-  .nav-item-active {
-    @apply text-green-400 font-semibold;
-  }
+button {
+  border-radius: 9999px;  /* Fully rounded - like Tailwind's rounded-full */
+  background: linear-gradient(to bottom right, #4b5563, #000000);  /* Gray-600 to Black */
+  color: #ffffff;         /* White text */
+  padding: 0.75rem 1.5rem; /* Good clickable area */
+  border: 1px solid #4b5563; /* Gray-600 border */
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: linear-gradient(to bottom right, #6b7280, #111111); /* Slightly lighter gray on hover */
+}
+
+form {
+  max-width: 500px;
+  margin: 4rem auto;  /* Centers the form and adds top/bottom spacing */
+  padding: 2rem;
+  border-radius: 1.5rem;
+  background: linear-gradient(to bottom right, #374151, #000000); /* gray to black */
+  border: 1px solid #4b5563;  /* subtle gray border */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;  /* Space between form elements */
+}
+
+label {
+  color: #ffffff;
+  font-weight: 600;
+  width: 30%;
+  text-align: left;
+}
+
+input {
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  background-color: #374151;  /* dark gray background */
+  color: #000000;             /* black text inside */
+  border: 1px solid #4b5563;  /* subtle border */
+  width: 70%;
+}
+
+input::placeholder {
+  color: #9ca3af; /* light gray placeholder */
+}
+
+input:focus {
+  outline: none;
+  border-color: #9ca3af;  /* lighter gray border on focus */
+}
+
+/* Flex container for each label-input pair */
+.form-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Global button styling */
+button {
+  border-radius: 9999px;
+  background: linear-gradient(to bottom right, #4b5563, #000000);
+  color: #ffffff;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  width: 100%;
+}
+
+button:hover {
+  background: linear-gradient(to bottom right, #6b7280, #111111);
 }

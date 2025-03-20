@@ -4,8 +4,8 @@ import { HomeIcon, ChartBarIcon, PlusIcon, FolderIcon } from '@heroicons/react/2
 
 function NavBar() {
   return (
-    <nav className="fixed bottom-0 md:top-0 w-full h-16 bg-black border-t border-gray-800 shadow-lg md:border-b md:border-t-0 z-50">
-      <ul className="flex justify-around items-center h-full text-white">
+    <nav className="fixed bottom-0 md:top-0 md:bottom-auto w-full h-16 bg-black border-t border-gray-800 shadow-lg md:border-b md:border-t-0 z-50">
+      <ul className="flex justify-around items-center h-full w-full">
         <NavLink
           to="/reporting"
           className={({ isActive }) =>

@@ -23,7 +23,7 @@ export const useReceiptsRequest = () =>
   leitenRequest(useStore, "data.receipts", () => fetchTemplate("/receipts"));
 
 export const useNewReceiptRequest = () =>
-  leitenRequest(useStore, "data.receipts", (formattedData) => 
+  leitenRequest(useStore, null, (formattedData) => 
     fetchTemplate("/receipts", {
     method: "POST",
     headers: {"Content-Type": "application/json"},

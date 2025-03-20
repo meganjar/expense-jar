@@ -17,7 +17,6 @@ function App() {
 
   return (
     <>
-      <div>
         <NavBar />
         <Routes>
           <Route path="/"  element={<HomePage />} />
@@ -25,8 +24,6 @@ function App() {
           <Route path="/receipts" element={<ReceiptsPage />} />
           <Route path="/reporting" element={<ReportingPage />} />
         </Routes>
-        
-      </div>
     </>
   );
 }

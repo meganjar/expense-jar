@@ -23,14 +23,16 @@ export default function ReportingPage() {
 
   const total = filteredReceipts.reduce((sum, receipt) => sum + receipt.totalCost, 0);
   return (
-    <div>
-      <h2>Reporting</h2>
+    <>
+      <h2 className="text-4xl font-bold text-white mb-4"
+      >Reporting</h2>
 
-      <div>total : ${total}</div>
+      <h3>total : ${total}</h3>
       <label htmlFor="start">Start date: </label>
       <input
         id="start"
         type="date"
+        max={new Date().toISOString().split('T')[0]} 
         value={startDate}
         onChange={(e) => setStartDate(e.target.value)}
         name="start"
@@ -39,6 +41,7 @@ export default function ReportingPage() {
       <input
         id="end"
         type="date"
+        max={new Date().toISOString().split('T')[0]} 
         value={endDate}
         onChange={(e) => setEndDate(e.target.value)}
         name="start"
@@ -62,6 +65,6 @@ export default function ReportingPage() {
             ))}
         </tbody>
       </table>
-    </div>
+    </>
   );
 }

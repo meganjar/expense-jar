@@ -3,10 +3,10 @@ import NewReceipt from '../Components/NewReceipt'
 
 function HomePage() {
   return (
-    <div>
-      <div>HomePage</div>
+    <>
+      <h1>HomePage</h1>
       <NewReceipt />
-    </div>
+    </>
   )
 }
 

@@ -16,7 +16,7 @@ const { action: fetchReceipts } = useReceiptsRequest();
   }
   
   return (
-    <div>
+    <div >
     
       {/*  image field in backlog <img src="" alt="" /> */ }
       <p>{receipt.vendor}</p>
