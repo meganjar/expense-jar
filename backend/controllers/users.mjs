@@ -1,4 +1,3 @@
-
 import { generateToken } from "../utils/jwt.js";
 import Users from "../model/users.mjs";
 import bcrypt from "bcrypt";
@@ -7,15 +6,14 @@ import jwt from "jsonwebtoken";
 const JWT_SECRET = process.env.JWT_SECRET;
 
 // Create non-oauth user
-// no GoogleId 
+// no GoogleId
 export async function createUser(req, res) {
   try {
-    const { name, email, password } =  req.body;
-    const existingUser = await Users.findOne({email})
+    const { name, email, password } = req.body;
+    const existingUser = await Users.findOne({ email });
 
     if (existingUser) {
       return res.status(409).json({ message: "User already exists" });
-
     }
 
     const hashedPassword = password
@@ -39,7 +37,6 @@ export async function createUser(req, res) {
 export async function logInUser(req, res) {
   try {
     if (existingUser) {
-   
       const { email, password } = req.body;
       if (!email || !password) {
         return res
@@ -48,20 +45,18 @@ export async function logInUser(req, res) {
       }
     }
 
-      const user = await Users.findOne({ email });
-      if (!user || !(await bcrypt.compare(password, user.password))) {
-        return res.status(401).json({ message: "Invalid credentials" });
-      }
+    const user = await Users.findOne({ email });
+    if (!user || !(await bcrypt.compare(password, user.password))) {
+      return res.status(401).json({ message: "Invalid credentials" });
+    }
 
-      const token = generateToken(user);
-      return res.status(200).json({ message: "User logged in", token });
-    
+    const token = generateToken(user);
+    return res.status(200).json({ message: "User logged in", token });
   } catch (error) {
     console.error(error);
     return res.status(500).json({ message: "Error logging in", error });
-   }
+  }
 }
-
 
 export async function getAllUsers(req, res) {
   try {
@@ -127,7 +122,7 @@ export function updateUserPassword(req, res) {
           res.status(200).json({ message: "Password updated successfully" });
         })
         .catch((error) =>
-          res.status(500).json({ message: "Error updating password", error })
+          res.status(500).json({ message: "Error updating password", error }),
         );
     });
   });

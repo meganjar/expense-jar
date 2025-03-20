@@ -18,16 +18,16 @@ function App() {
 
   return (
     <>
-        <NavBar />
-        <div className="mt-8 md:mt-20 pt-0 md:pt-16 px-8 md:px-16">
-          <img src={logo} alt="" className="w-20 mx-auto mb-5" />
+      <NavBar />
+      <div className="mt-8 md:mt-20 pt-0 md:pt-16 px-8 md:px-16">
+        <img src={logo} alt="" className="w-20 mx-auto mb-5" />
         <Routes>
-          <Route path="/"  element={<HomePage />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/receipts" element={<ReceiptsPage />} />
           <Route path="/reporting" element={<ReportingPage />} />
         </Routes>
-        </div>
+      </div>
     </>
   );
 }

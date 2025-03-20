@@ -5,22 +5,17 @@ import {
   getAllUsers,
   getUserById,
   deleteUser,
-  updateUserPassword
+  updateUserPassword,
 } from "../controllers/users.mjs";
 
 const router = express.Router();
 
 router.post("/login", logInUser);
 
-router.route("/")
-  .post(createUser)
-  .get(getAllUsers)
+router.route("/").post(createUser).get(getAllUsers);
 
-router.route("/:id")
-  .get(getUserById)
-  .delete(deleteUser)
+router.route("/:id").get(getUserById).delete(deleteUser);
 
-router.route("/:id/password")
-  .put(updateUserPassword)
+router.route("/:id/password").put(updateUserPassword);
 
 export default router;

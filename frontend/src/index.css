@@ -15,7 +15,7 @@
   }
 
   button {
-   
+  
     @apply bg-[#1a1a1a] text-white rounded-lg p-3 w-full shadow-sm ;
            hover:bg-[#222222] active:bg-[#333333];
   }
@@ -54,14 +54,14 @@
 
 
 button {
-  @apply text-white rounded-full shadow-sm w-fit mx-auto mt-4 p-3 font-semibold;
-  background: linear-gradient(to bottom right, #4b5563, #000000); /* Gray-600 to Black */
-  border: 1px solid #4b5563; /* Gray-600 border */
+  @apply text-white rounded-full shadow-sm w-fit mx-auto mt-4 p-3 px-6 font-semibold;
+  background: linear-gradient(to bottom right, #a8fc0029, #000000); /* Gray-600 to Black */
+  border: 1px solid #affe4065; /* Gray-600 border */
   cursor: pointer;
   transition: background 0.3s ease;
 }
 }
 
 button:hover {
-  background: linear-gradient(to bottom right, #ffffff, #2b2b2b); /* Slightly lighter gray on hover */
+  background: linear-gradient(to bottom right, #63ff02b2, #000000); /* Slightly lighter gray on hover */
 }

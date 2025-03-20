@@ -1,5 +1,5 @@
-import React from 'react'
-import NewReceipt from '../Components/NewReceipt'
+import React from "react";
+import NewReceipt from "../Components/NewReceipt";
 
 function HomePage() {
   return (
@@ -7,7 +7,7 @@ function HomePage() {
       <h1 className="text-4xl font-bold text-white mb-4">Add a receipt</h1>
       <NewReceipt />
     </>
-  )
+  );
 }
 
-export default HomePage
+export default HomePage;
