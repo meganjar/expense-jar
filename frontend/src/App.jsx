@@ -10,9 +10,6 @@ import NewReceipt from "./Components/NewReceipt";
 import logo from "./assets/jar-logo-white.png";
 
 function App() {
-  // const res = await fetch("http://localhost:8080/");
-  // const data = await res.json();
-  // console.log(data)
 
   async function handleSubmit(e) {}
 
