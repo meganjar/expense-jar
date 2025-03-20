@@ -1,0 +1,16 @@
+{
+  "name": "Expense Jar",
+  "short_name": "Expense Jar",
+  "start_url": "/login",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "/src/assets/apple-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
