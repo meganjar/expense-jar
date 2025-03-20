@@ -1,7 +1,5 @@
 Expense Jar
 
-Prod front: https://expense-jar-frontend.onrender.com/login
-
 Expense Jar is a comprehensive expense tracking application designed to help users manage their finances effectively. The application offers seamless integration with Google for authentication and can be added to your iPhone’s home screen for a native app-like experience.
 
 Features
