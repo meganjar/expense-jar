@@ -19,7 +19,7 @@ router
 
 export default router;
 
-//mock item
+//mock receipt item
 const item = {
   transactionDate: '2025-03-15T14:30:00Z',
   totalCost: 75.5,
