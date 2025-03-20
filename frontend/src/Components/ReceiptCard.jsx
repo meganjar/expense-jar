@@ -16,7 +16,7 @@ const { action: fetchReceipts } = useReceiptsRequest();
   }
   
   return (
-    <div >
+    <div className="rounded-2xl border border-gray-500 bg-gradient-to-bl from-gray-600 to-black p-6 shadow-md">
     
       {/*  image field in backlog <img src="" alt="" /> */ }
       <p>{receipt.vendor}</p>
