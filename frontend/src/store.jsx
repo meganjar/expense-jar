@@ -1,7 +1,7 @@
-import { create } from "zustand";
-import { leitenRequest } from "leiten-zustand";
+import { create } from 'zustand';
+import { leitenRequest } from 'leiten-zustand';
 
-const baseURL = "http://localhost:8080/api";
+const baseURL = 'http://localhost:8080/api';
 
 export const useStore = create(() => ({
   data: {
@@ -21,18 +21,18 @@ const fetchTemplate = (endpoint, options) =>
   );
 
 export const useReceiptsRequest = () =>
-  leitenRequest(useStore, "data.receipts", () => fetchTemplate("/receipts"));
+  leitenRequest(useStore, 'data.receipts', () => fetchTemplate('/receipts'));
 
 export const useNewReceiptRequest = () =>
   leitenRequest(useStore, null, (formattedData) =>
-    fetchTemplate("/receipts", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
+    fetchTemplate('/receipts', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formattedData),
     }),
   );
 
 export const useDeleteReceiptRequest = () =>
   leitenRequest(useStore, null, (data) =>
-    fetchTemplate(`/receipts/${data.receiptID}`, { method: "DELETE" }),
+    fetchTemplate(`/receipts/${data.receiptID}`, { method: 'DELETE' }),
   );

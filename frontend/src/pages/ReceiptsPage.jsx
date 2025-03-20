@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
-import { NavLink } from "react-router-dom";
-import { useStore, useReceiptsRequest } from "../store";
-import ReceiptCard from "../Components/ReceiptCard";
+import React, { useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
+import { useStore, useReceiptsRequest } from '../store';
+import ReceiptCard from '../Components/ReceiptCard';
 
 export default function ReceiptsPage() {
   const { action, loading, error } = useReceiptsRequest();
@@ -15,7 +15,7 @@ export default function ReceiptsPage() {
 
   return (
     <>
-      <h2 className="text-4xl font-bold text-white mb-4">Receipts</h2>
+      <h2 className='text-4xl font-bold text-white mb-4'>Receipts</h2>
       {receipts.map((receipt) => (
         <ReceiptCard key={receipt._id} receipt={receipt} />
       ))}

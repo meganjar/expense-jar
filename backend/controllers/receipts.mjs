@@ -1,4 +1,4 @@
-import receipts from "../model/receipts.mjs";
+import receipts from '../model/receipts.mjs';
 
 export async function createReceipt(req, res) {
   try {
@@ -20,7 +20,7 @@ export async function createReceipt(req, res) {
     res.status(201).json(savedReceipt);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "Error creating receipt", error });
+    res.status(500).json({ message: 'Error creating receipt', error });
   }
 }
 
@@ -30,13 +30,13 @@ export async function getAllReceipts(req, res) {
     console.log(allReceipts.find);
     allReceipts.forEach((receipt) => {
       if (receipt.image?.data) {
-        receipt.image.data = receipt.image.data.toString("base64");
+        receipt.image.data = receipt.image.data.toString('base64');
       }
     });
     res.status(200).json(allReceipts);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "Error fetching receipts", error });
+    res.status(500).json({ message: 'Error fetching receipts', error });
   }
 }
 
@@ -44,12 +44,12 @@ export async function getReceiptById(req, res) {
   try {
     const receipt = await receipts.findById(req.params.id);
     if (!receipt) {
-      return res.status(404).json({ message: "receipt not found" });
+      return res.status(404).json({ message: 'receipt not found' });
     }
     res.status(200).json(receipt);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "Error fetching receipt", error });
+    res.status(500).json({ message: 'Error fetching receipt', error });
   }
 }
 
@@ -57,12 +57,12 @@ export async function deleteReceipt(req, res) {
   try {
     const receipt = await receipts.findByIdAndDelete(req.params.id);
     if (!receipt) {
-      return res.status(404).json({ message: "receipt not found" });
+      return res.status(404).json({ message: 'receipt not found' });
     }
-    res.status(200).json({ message: "receipt deleted successfully" });
+    res.status(200).json({ message: 'receipt deleted successfully' });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "Error deleting receipt", error });
+    res.status(500).json({ message: 'Error deleting receipt', error });
   }
 }
 
@@ -72,15 +72,15 @@ export async function updateReceipt(req, res) {
     const updatedReceipt = await receipts.findByIdAndUpdate(
       req.params.id,
       { $set: req.body },
-      { new: true, runValidators: true },
+      { new: true, runValidators: true }
     );
 
     if (!updatedReceipt) {
-      return res.status(404).json({ message: "Receipt not found" });
+      return res.status(404).json({ message: 'Receipt not found' });
     }
 
     res.status(200).json(updatedReceipt);
   } catch (error) {
-    res.status(500).json({ message: "Failed to update receipt", error });
+    res.status(500).json({ message: 'Failed to update receipt', error });
   }
 }

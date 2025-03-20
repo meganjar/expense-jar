@@ -1,6 +1,6 @@
-import React from "react";
-import { useState } from "react";
-import { useStore, useNewReceiptRequest, useReceiptsRequest } from "../store";
+import React from 'react';
+import { useState } from 'react';
+import { useStore, useNewReceiptRequest, useReceiptsRequest } from '../store';
 
 function NewReceipt() {
   const { action: createReceipt } = useNewReceiptRequest();
@@ -31,28 +31,28 @@ function NewReceipt() {
   //   );
   // };
   return (
-    <div className="rounded-2xl border border-gray-500 bg-gradient-to-bl from-gray-600 to-black p-6 shadow-sm">
-      <form onSubmit={handleSubmit} className="flex flex-col space-y-3">
-        <label htmlFor="merchant">Merchant</label>
-        <input type="text" id="merchant" name="vendor" required />
-        <label htmlFor="amount">Amount $</label>
+    <div className='rounded-2xl border border-gray-500 bg-gradient-to-bl from-gray-600 to-black p-6 shadow-sm'>
+      <form onSubmit={handleSubmit} className='flex flex-col space-y-3'>
+        <label htmlFor='merchant'>Merchant</label>
+        <input type='text' id='merchant' name='vendor' required />
+        <label htmlFor='amount'>Amount $</label>
         <input
-          type="number"
-          step="0.01"
-          id="amount"
-          name="totalCost"
+          type='number'
+          step='0.01'
+          id='amount'
+          name='totalCost'
           required
         />
-        <label htmlFor="date">Date</label>
+        <label htmlFor='date'>Date</label>
         <input
-          type="date"
-          max={new Date().toISOString().split("T")[0]}
-          id="date"
-          name="transactionDate"
+          type='date'
+          max={new Date().toISOString().split('T')[0]}
+          id='date'
+          name='transactionDate'
           required
         />
 
-        <button type="submit">Submit</button>
+        <button type='submit'>Submit</button>
       </form>
     </div>
   );

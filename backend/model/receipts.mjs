@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 var imageSchema = new mongoose.Schema({
   name: String,
@@ -31,7 +31,7 @@ const receiptsSchema = new mongoose.Schema({
       itemCost: {
         type: Number,
         required: true,
-        min: [0.01, "Total cost must be greater than $0.00."],
+        min: [0.01, 'Total cost must be greater than $0.00.'],
       },
     },
   ],
@@ -43,4 +43,4 @@ const receiptsSchema = new mongoose.Schema({
 
 receiptsSchema.index({ transactionDate: 1, totalCost: -1 });
 
-export default mongoose.model("Receipts", receiptsSchema);
+export default mongoose.model('Receipts', receiptsSchema);

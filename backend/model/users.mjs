@@ -1,5 +1,5 @@
-import mongoose from "mongoose";
-import isEmail from "validator/lib/isEmail.js";
+import mongoose from 'mongoose';
+import isEmail from 'validator/lib/isEmail.js';
 
 const usersSchema = new mongoose.Schema({
   googleId: {
@@ -17,9 +17,9 @@ const usersSchema = new mongoose.Schema({
     unique: true,
     validate: {
       validator: function (email) {
-        return isEmail(email) && !email.includes("+");
+        return isEmail(email) && !email.includes('+');
       },
-      message: "Not a valid email address",
+      message: 'Not a valid email address',
     },
   },
   password: {
@@ -30,4 +30,4 @@ const usersSchema = new mongoose.Schema({
   },
 });
 
-export default mongoose.model("Users", usersSchema);
+export default mongoose.model('Users', usersSchema);
