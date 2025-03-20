@@ -7,6 +7,7 @@ import LoginPage from "./pages/LoginPage";
 import ReceiptsPage from "./pages/ReceiptsPage";
 import NavBar from "./Components/NavBar";
 import NewReceipt from "./Components/NewReceipt";
+import logo from "./assets/jar-logo-white.png";
 
 function App() {
   // const res = await fetch("http://localhost:8080/");
@@ -18,7 +19,8 @@ function App() {
   return (
     <>
         <NavBar />
-        <div className="pt-16 md:pt-16 px-8 md:px-16">
+        <div className="mt-8 md:mt-20 pt-0 md:pt-16 px-8 md:px-16">
+          <img src={logo} alt="" className="w-20 mx-auto mb-5" />
         <Routes>
           <Route path="/"  element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
