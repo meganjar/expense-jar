@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { leitenRequest } from 'leiten-zustand';
 
-const baseURL = 'http://localhost:8080/api';
+const baseUrl = import.meta.env.VITE_BASE_URL;
 
 export const useStore = create(() => ({
   data: {
@@ -12,7 +12,7 @@ export const useStore = create(() => ({
 
 //reuse fetch
 const fetchTemplate = (endpoint, options) =>
-  fetch(`${baseURL}${endpoint}`, options).then((res) =>
+  fetch(`${baseUrl}${endpoint}`, options).then((res) =>
     res.ok
       ? res.json()
       : res.json().then((err) => {
