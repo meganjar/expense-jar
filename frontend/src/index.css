@@ -15,7 +15,8 @@
   }
 
   button {
-    @apply bg-[#1a1a1a] text-white rounded-lg p-3 w-full shadow-sm 
+   
+    @apply bg-[#1a1a1a] text-white rounded-lg p-3 w-full shadow-sm ;
            hover:bg-[#222222] active:bg-[#333333];
   }
 }
@@ -50,17 +51,15 @@
   h3 {
     @apply text-2xl font-medium;
   }
-}
+
 
 button {
-  border-radius: 9999px;  /* Fully rounded - like Tailwind's rounded-full */
-  background: linear-gradient(to bottom right, #4b5563, #000000);  /* Gray-600 to Black */
-  color: #ffffff;         /* White text */
-  padding: 0.75rem 1.5rem; /* Good clickable area */
+  @apply text-white rounded-full shadow-sm w-fit mx-auto mt-4 p-3 font-semibold;
+  background: linear-gradient(to bottom right, #4b5563, #000000); /* Gray-600 to Black */
   border: 1px solid #4b5563; /* Gray-600 border */
-  font-weight: 600;
-  cursor: ;
+  cursor: pointer;
   transition: background 0.3s ease;
+}
 }
 
 button:hover {

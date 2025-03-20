@@ -33,9 +33,9 @@ function NewReceipt() {
   //   );
   // };
   return (
-    <div className="rounded-2xl border border-gray-500 bg-gradient-to-bl from-gray-600 to-black p-6 shadow-md">
-      <form onSubmit={handleSubmit} >
-     <div >
+    <div className="rounded-2xl border border-gray-500 bg-gradient-to-bl from-gray-600 to-black p-6 shadow-sm">
+      <form onSubmit={handleSubmit} className="flex flex-col space-y-3" >
+     
           <label htmlFor="merchant">Merchant</label>
           <input type="text" id="merchant" name="vendor" required />
           <label htmlFor="amount">Amount $</label>
@@ -44,7 +44,7 @@ function NewReceipt() {
           <input type="date" max={new Date().toISOString().split('T')[0]}  id="date" name="transactionDate" required/>
 
           <button type="submit">Submit</button>
-          </div>
+       
       </form>
     </div>
   );

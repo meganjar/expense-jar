@@ -15,7 +15,7 @@ export default function ReceiptsPage() {
 
   return (
     <>
-      <h2>Receipts</h2>
+      <h2 className="text-4xl font-bold text-white mb-4">Receipts</h2>
       {receipts.map((receipt) => (
         
           <ReceiptCard  key={receipt._id}receipt={receipt} />
