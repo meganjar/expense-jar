@@ -56,8 +56,8 @@
       to bottom right,
       #a8fc0029,
       #000000
-    ); /* Gray-600 to Black */
-    border: 1px solid #affe4065; /* Gray-600 border */
+    ); 
+    border: 1px solid #affe4065; 
     cursor: pointer;
     transition: background 0.3s ease;
   }
@@ -68,5 +68,5 @@ button:hover {
     to bottom right,
     #63ff02b2,
     #000000
-  ); /* Slightly lighter gray on hover */
+  ); 
 }

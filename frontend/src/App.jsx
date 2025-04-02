@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import ReportingPage from "./pages/ReportingPage";
@@ -6,7 +6,6 @@ import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import ReceiptsPage from "./pages/ReceiptsPage";
 import NavBar from "./Components/NavBar";
-import NewReceipt from "./Components/NewReceipt";
 import logo from "./assets/jar-logo-white.png";
 
 function App() {

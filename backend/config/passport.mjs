@@ -7,7 +7,7 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: 'http://localhost:8080/api/auth/login/google/callback',
+      callbackURL: 'http://expense-jar.com/api/auth/login/google/callback',
       scope: ['email', 'profile', 'openid'],
     },
     async (accessToken, refreshToken, profile, done) => {
