@@ -4,6 +4,7 @@ export class TradSignup extends Component {
   render() {
     return (
       <div>TradSignup
+        <form onSubmit={handleSubmit} className='flex flex-col space-y-3'>
         <label htmlFor='date'>email</label>
       <input
         type='string'
@@ -19,6 +20,7 @@ export class TradSignup extends Component {
         name='choose-password'
         required
       />
+      </form>
    
       </div>
     )
